@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: datacenter
+spec:
+  jobTemplate:
+    metadata:
+      name: datacenter
+    spec:
+      template:
+        spec:
+          containers:
+          - command:
+            - echo
+            - Welcome to xfusioncorp!
+            image: nginx:latest
+            name: cronjob-container
+          restartPolicy: OnFailure
+  schedule: '*/9 * * * *'

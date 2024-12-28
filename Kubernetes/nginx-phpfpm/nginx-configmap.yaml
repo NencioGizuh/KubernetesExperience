@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  nginx.conf: |
+    worker_processes 1;
+    error_log nginx_error.log;
+    events {
+      worker_connections 1024;
+    }
+
+    http {
+        server {
+            listen 8097;
+            location / {
+              root /var/www/html;
+              index  index.html index.htm index.php;
+            }
+        }
+    } 
+metadata:
+  name: nginx-config
